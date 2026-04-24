@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="iletisim" class="py-20 bg-brand-navy">
@@ -41,7 +42,7 @@
           <p class="text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">Uzmanınız</p>
           <div class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl px-5 py-4">
             <img
-              src={`${import.meta.env.BASE_URL}images/kaan-pp.jpg`}
+              src={`${base}images/kaan-pp.jpg`}
               alt="Kaan Yalcinkaya"
               class="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-brand-amber"
               width="56"

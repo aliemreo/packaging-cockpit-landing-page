@@ -1,6 +1,7 @@
 ---
 import Container from "@components/container.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+const base = import.meta.env.BASE_URL;
 
 const navItems = [
   { title: "Çözüm", path: "#cozum" },
@@ -18,7 +19,7 @@ const navItems = [
         <div class="flex w-full lg:w-auto items-center justify-between">
           <a href="/" class="flex items-center gap-2" aria-label="MAT Ambalaj Çözümleri Ana Sayfa">
             <img
-              src={`${import.meta.env.BASE_URL}images/logo-mat.png`}
+              src={`${base}images/logo-mat.png`}
               alt="MAT Ambalaj Çözümleri"
               class="h-16 w-auto object-contain"
               width="256"

@@ -1,5 +1,6 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 
 const quickLinks = [
   { title: "Çözüm", path: "#cozum" },
@@ -22,7 +23,7 @@ const legalLinks = [
       <div>
         <div class="mb-5">
           <img
-            src={`${import.meta.env.BASE_URL}images/logo-mat.png`}
+            src={`${base}images/logo-mat.png`}
             alt="MAT Ambalaj Çözümleri"
             class="h-10 w-auto object-contain brightness-0 invert"
             width="180"

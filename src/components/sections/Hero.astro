@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-gradient-to-br from-white to-teal-50">
@@ -9,7 +10,7 @@
         <div data-reveal class="mb-8">
           <div class="flex items-center gap-5 mb-3">
             <img
-              src={`${import.meta.env.BASE_URL}images/logo-pc.png`}
+              src={`${base}images/logo-pc.png`}
               alt="Packaging Cockpit"
               class="h-28 w-auto object-contain max-w-xs"
               width="400"
@@ -17,7 +18,7 @@
             />
             <div class="w-px h-20 bg-gray-300 flex-shrink-0"></div>
             <img
-              src={`${import.meta.env.BASE_URL}images/logo-mat.png`}
+              src={`${base}images/logo-mat.png`}
               alt="MAT Ambalaj Çözümleri"
               class="h-16 w-auto object-contain"
               width="200"
@@ -60,7 +61,7 @@
         <!-- Expert social proof -->
         <a data-reveal href="#iletisim" class="inline-flex items-center gap-3 group">
           <img
-            src={`${import.meta.env.BASE_URL}images/kaan-pp.jpg`}
+            src={`${base}images/kaan-pp.jpg`}
             alt="Kaan Yalcinkaya"
             class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-teal/30 group-hover:ring-brand-teal transition-all duration-200"
             width="40"
