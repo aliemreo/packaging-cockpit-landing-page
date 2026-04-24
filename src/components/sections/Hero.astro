@@ -9,7 +9,7 @@
         <div data-reveal class="mb-8">
           <div class="flex items-center gap-5 mb-3">
             <img
-              src="/images/logo-pc.png"
+              src={`${import.meta.env.BASE_URL}images/logo-pc.png`}
               alt="Packaging Cockpit"
               class="h-28 w-auto object-contain max-w-xs"
               width="400"
@@ -17,7 +17,7 @@
             />
             <div class="w-px h-20 bg-gray-300 flex-shrink-0"></div>
             <img
-              src="/images/logo-mat.png"
+              src={`${import.meta.env.BASE_URL}images/logo-mat.png`}
               alt="MAT Ambalaj Çözümleri"
               class="h-16 w-auto object-contain"
               width="200"
@@ -56,6 +56,20 @@
         <p data-reveal class="text-sm text-gray-500 mb-6">
           Ücretsiz Basic sürümle hemen başlayın — kredi kartı gerekmez. Gelişmiş özellikler için <a href="#fiyatlandirma" class="text-brand-teal font-medium hover:underline">paketlere bakın</a>.
         </p>
+
+        <!-- Expert social proof -->
+        <a data-reveal href="#iletisim" class="inline-flex items-center gap-3 group">
+          <img
+            src={`${import.meta.env.BASE_URL}images/kaan-pp.jpg`}
+            alt="Kaan Yalcinkaya"
+            class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-teal/30 group-hover:ring-brand-teal transition-all duration-200"
+            width="40"
+            height="40"
+          />
+          <span class="text-sm text-gray-600 group-hover:text-brand-teal transition-colors duration-200">
+            <span class="font-semibold text-gray-800">Kaan Yalcinkaya</span> ile 30 dk. ücretsiz görüşün →
+          </span>
+        </a>
 
         <!-- Trust bar -->
         <div class="border-t border-gray-200 pt-6">
