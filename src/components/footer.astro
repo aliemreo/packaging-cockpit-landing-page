@@ -1,6 +1,6 @@
 ---
 const year = new Date().getFullYear();
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
 const quickLinks = [
   { title: "Çözüm", path: "#cozum" },

@@ -7,8 +7,8 @@ const plans = [
     tagColor: "bg-teal-100 text-teal-700",
     highlight: false,
     cta: "Ücretsiz Kaydol",
-    ctaLink: "https://packaging-cockpit.com",
-    ctaExternal: true,
+    ctaLink: "#iletisim",
+    ctaExternal: false,
     ctaStyle: "border-2 border-brand-teal text-brand-teal hover:bg-teal-50",
     description: "Platform keşfi ve temel geri dönüşülebilirlik hesaplamaları için.",
   },
@@ -99,21 +99,12 @@ const rows: { label: string; values: string[] }[] = [
             <p class="text-sm text-gray-500 mt-1.5 leading-relaxed">{plan.description}</p>
           </div>
           <div class="mt-auto pt-4">
-            {plan.ctaExternal ? (
-              <a
-                href={plan.ctaLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`block w-full text-center py-2.5 rounded-lg font-semibold text-sm transition-colors duration-150 ${plan.ctaStyle}`}>
-                {plan.cta}
-              </a>
-            ) : (
-              <a
-                href={plan.ctaLink}
-                class={`block w-full text-center py-2.5 rounded-lg font-semibold text-sm transition-colors duration-150 ${plan.ctaStyle}`}>
-                {plan.cta}
-              </a>
-            )}
+            <a
+              href={`#iletisim`}
+              data-plan={plan.name}
+              class={`block w-full text-center py-2.5 rounded-lg font-semibold text-sm transition-colors duration-150 ${plan.ctaStyle}`}>
+              {plan.cta}
+            </a>
           </div>
         </div>
       ))}

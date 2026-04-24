@@ -1,5 +1,5 @@
 ---
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 
 <section id="iletisim" class="py-20 bg-brand-navy">
@@ -156,6 +156,8 @@ const base = import.meta.env.BASE_URL;
             ></textarea>
           </div>
 
+          <!-- Plan source (set via JS when coming from pricing) -->
+          <input type="hidden" name="plan" id="form-plan" value="" />
           <!-- Honeypot -->
           <input type="text" name="_gotcha" style="display:none" />
 
@@ -181,6 +183,14 @@ const base = import.meta.env.BASE_URL;
 <script>
   const form = document.getElementById('demo-form') as HTMLFormElement;
   const successMsg = document.getElementById('form-success') as HTMLElement;
+  const planInput = document.getElementById('form-plan') as HTMLInputElement;
+
+  // Pricing butonlarından gelen plan adını forma yaz
+  document.querySelectorAll('[data-plan]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      planInput.value = (btn as HTMLElement).dataset.plan || '';
+    });
+  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
