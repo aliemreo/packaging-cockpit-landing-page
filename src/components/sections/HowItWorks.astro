@@ -1,0 +1,222 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Kayıt ve Kurulum",
+    body: "MAT Consultancy ekibi, platforma erişim ve ilk kurulumu sizin için gerçekleştirir. Mevcut ambalaj verilerinizi migrate etmenize yardımcı olur.",
+    detail: "Ortalama 1–2 iş günü içinde erişim aktif hale gelir. Dedicated onboarding uzmanı size eşlik eder.",
+    icon: "🚀",
+  },
+  {
+    number: "02",
+    title: "Veri Girişi",
+    body: "Ambalaj birimlerinizi (şişe, kutu, etiket vb.) bileşen bazında tanımlayın. GS1 standartlarıyla veya manuel olarak veri girişi yapılabilir.",
+    detail: "Toplu import özelliği ile mevcut Excel/CSV tablolarınızı saniyeler içinde platforma aktarın.",
+    icon: "📋",
+  },
+  {
+    number: "03",
+    title: "Analiz ve Raporlama",
+    body: "Tek tıkla hedef pazarlarınız için geri dönüşülebilirlik ve LCA analizleri oluşturun. PDF raporlar ve dashboard görselleştirmeler.",
+    detail: "27 AB ülkesinin her biri için ayrı hesaplama. CO₂eq, geri dönüşüm skoru ve plastik vergi tahmini tek ekranda.",
+    icon: "📊",
+  },
+  {
+    number: "04",
+    title: "Optimizasyon",
+    body: "Alternatif ambalaj tasarımlarını karşılaştırın, maliyet-etki analizi yapın, MAT Consultancy'nin uzman danışmanlığıyla iyileştirme yol haritası çıkarın.",
+    detail: "Simülasyon modülüyle 'eğer şu malzemeyi kullansaydım ne olurdu?' sorusuna anında yanıt alın.",
+    icon: "⚡",
+  },
+];
+---
+
+<!-- ─── MOBILE: classic timeline ─── -->
+<section id="nasil-calisir" class="lg:hidden bg-white py-20 px-4 sm:px-6">
+  <div class="max-w-xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-3">Süreç</p>
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">Nasıl Çalışır?</h2>
+      <p class="text-gray-500">Dört adımda sürdürülebilirlik yolculuğuna başlayın.</p>
+    </div>
+    <div class="space-y-0">
+      {steps.map((step, i) => (
+        <div data-reveal class="flex gap-5">
+          <div class="flex flex-col items-center flex-shrink-0">
+            <div class="w-11 h-11 rounded-full bg-brand-teal text-white flex items-center justify-center font-bold text-sm shadow">
+              {step.number}
+            </div>
+            {i < steps.length - 1 && <div class="w-px flex-1 bg-gray-200 my-1 min-h-[40px]" />}
+          </div>
+          <div class="pb-10">
+            <div class="text-2xl mb-2">{step.icon}</div>
+            <h3 class="font-bold text-gray-900 text-lg mb-2">{step.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-2">{step.body}</p>
+            <p class="text-brand-teal text-xs font-medium">{step.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── DESKTOP: true pinned sticky section ─── -->
+<!--
+  Outer div is (steps.length × 100vh + 100vh) tall — this is the scroll distance.
+  Inner div is sticky top-0 h-screen — this is what stays locked on screen.
+  JS calculates which step to show based on scroll progress through the outer div.
+-->
+<div
+  id="how-outer"
+  class="hidden lg:block bg-white relative"
+  style={`height: ${(steps.length + 1) * 100}vh`}>
+
+  <div id="how-inner" class="sticky top-0 h-screen overflow-hidden flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-8 grid grid-cols-[380px_1fr] gap-24 items-center h-full">
+
+      <!-- LEFT: always visible -->
+      <div>
+        <p class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-4">Süreç</p>
+        <h2 class="text-4xl font-bold text-gray-900 mb-5 leading-tight">
+          Nasıl<br />Çalışır?
+        </h2>
+        <p class="text-gray-500 leading-relaxed mb-10 text-sm">
+          Dört adımda ambalaj portföyünüzün sürdürülebilirlik yolculuğuna başlayın. MAT Consultancy ekibi her aşamada yanınızda.
+        </p>
+
+        <!-- Step list -->
+        <div class="space-y-3">
+          {steps.map((step, i) => (
+            <div class="how-indicator flex items-center gap-4" data-idx={i}>
+              <div class="how-dot w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-xs font-bold text-gray-400 flex-shrink-0 transition-all duration-500">
+                {step.number}
+              </div>
+              <span class="how-label text-sm text-gray-400 font-medium transition-all duration-500">
+                {step.title}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Progress bar -->
+        <div class="mt-8 w-28 h-1 bg-gray-100 rounded-full overflow-hidden">
+          <div id="how-progress" class="h-full bg-brand-teal rounded-full transition-all duration-500" style="width:25%" />
+        </div>
+      </div>
+
+      <!-- RIGHT: step panels, absolutely stacked, only active one visible -->
+      <div class="relative h-full flex items-center">
+        {steps.map((step, i) => (
+          <div
+            class="how-panel absolute inset-0 flex items-center transition-all duration-700"
+            data-panel={i}
+            style={i === 0 ? "opacity:1;transform:translateY(0)" : "opacity:0;transform:translateY(48px);pointer-events:none"}>
+            <div class="max-w-lg w-full">
+              <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gray-50 border border-gray-100 text-4xl mb-8 shadow-sm">
+                {step.icon}
+              </div>
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-brand-teal font-bold text-sm tracking-widest uppercase">{step.number}</span>
+                <div class="h-px w-12 bg-gray-200" />
+              </div>
+              <h3 class="text-4xl font-bold text-gray-900 mb-5 leading-tight">{step.title}</h3>
+              <p class="text-gray-600 text-lg leading-relaxed mb-6">{step.body}</p>
+              <div class="flex items-start gap-3 bg-teal-50 border border-teal-100 rounded-xl px-5 py-4">
+                <svg class="w-4 h-4 text-brand-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="text-sm text-teal-800 leading-relaxed">{step.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bottom stat (outside the pinned area) -->
+<div class="hidden lg:block border-t border-gray-100 bg-gray-50">
+  <div data-reveal class="max-w-7xl mx-auto px-8 py-8 text-center">
+    <p class="text-sm text-gray-500 font-medium uppercase tracking-wide mb-1">Tipik başlangıç süresi</p>
+    <p class="text-3xl font-bold text-brand-teal">2–4 Hafta</p>
+    <p class="text-gray-400 text-sm mt-1">Kurulum, veri migrasyonu ve temel eğitim dahil.</p>
+  </div>
+</div>
+
+<script>
+  (function () {
+  const outer = document.getElementById('how-outer');
+  const panels = document.querySelectorAll<HTMLElement>('.how-panel');
+  const indicators = document.querySelectorAll<HTMLElement>('.how-indicator');
+  const progressBar = document.getElementById('how-progress');
+  const STEP_COUNT = panels.length;
+
+  if (!outer || !STEP_COUNT) return;
+
+  let activeStep = 0;
+
+  function setStep(index: number) {
+    if (index === activeStep) return;
+    activeStep = index;
+
+    // Animate panels
+    panels.forEach((panel, i) => {
+      if (i === index) {
+        panel.style.opacity = '1';
+        panel.style.transform = 'translateY(0)';
+        panel.style.pointerEvents = 'auto';
+      } else if (i < index) {
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(-48px)';
+        panel.style.pointerEvents = 'none';
+      } else {
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(48px)';
+        panel.style.pointerEvents = 'none';
+      }
+    });
+
+    // Update indicators
+    indicators.forEach((ind, i) => {
+      const dot = ind.querySelector('.how-dot') as HTMLElement;
+      const label = ind.querySelector('.how-label') as HTMLElement;
+      if (i < index) {
+        dot.style.cssText = 'border-color:#0F766E;background:#0F766E;color:white;transform:scale(1)';
+        label.style.cssText = 'color:#374151;font-weight:500';
+      } else if (i === index) {
+        dot.style.cssText = 'border-color:#0F766E;background:#0F766E;color:white;transform:scale(1.18)';
+        label.style.cssText = 'color:#0F766E;font-weight:700';
+      } else {
+        dot.style.cssText = '';
+        label.style.cssText = '';
+      }
+    });
+
+    // Progress bar
+    if (progressBar) {
+      progressBar.style.width = ((index + 1) / STEP_COUNT * 100) + '%';
+    }
+  }
+
+  function onScroll() {
+    const rect = outer.getBoundingClientRect();
+    // scrolled = how many px we've scrolled into the outer div
+    const scrolled = -rect.top;
+    // total scrollable distance inside section
+    const total = rect.height - window.innerHeight;
+
+    if (scrolled < 0 || total <= 0) return;
+
+    const progress = Math.min(1, Math.max(0, scrolled / total));
+    // Map progress (0–1) to step index (0 to STEP_COUNT-1)
+    const raw = progress * STEP_COUNT;
+    const index = Math.min(STEP_COUNT - 1, Math.floor(raw));
+    setStep(index);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  })();
+</script>

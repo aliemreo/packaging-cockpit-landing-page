@@ -1,0 +1,86 @@
+---
+const faqs = [
+  {
+    q: "Packaging Cockpit'in Türk şirketleri için ana faydası nedir?",
+    a: "AB pazarına ihracat yapan veya yapmayı planlayan Türk şirketleri için PPWR uyumluluğu artık opsiyonel değil. Packaging Cockpit, bu uyumu veri temelli ve denetlenebilir şekilde sağlamanın en hızlı yoludur.",
+  },
+  {
+    q: "Mevcut ERP/PIM sistemimizle entegre olur mu?",
+    a: "Evet. Packaging Cockpit GS1 standartlarına dayanır (GTIN, GLN) ve API üzerinden SAP, Oracle, Microsoft Dynamics dahil çoğu kurumsal sistemle entegre edilebilir. MAT Ambalaj Çözümleri olarak entegrasyon planlamasını ve teknik implementasyonu sağlıyoruz.",
+  },
+  {
+    q: "Ne kadar zamanda kullanıma hazır olur?",
+    a: "Tipik bir kurulum, veri migrasyonu ve temel eğitim 2-4 hafta içinde tamamlanır. Pilot bir ürün grubu ile başlayıp aşamalı olarak genişletmek en yaygın yaklaşım.",
+  },
+  {
+    q: "Fiyatlandırma nasıl çalışıyor?",
+    a: "Packaging Cockpit ücretsiz bir Basic sürümüyle başlıyor: 1 kullanıcı, 50 geri dönüşüm kredisi ve İspanya pazarı analizi. Başlangıç, İleri ve İleri+ paketleri daha geniş ülke kapsamı (10 ülke → tüm AB → tüm dünya), daha fazla kullanıcı ve LCA analizleri içeriyor. Paket karşılaştırması için Fiyatlar bölümüne bakın; teklif için MAT Ambalaj Çözümleri ile iletişime geçin.",
+  },
+  {
+    q: "Ücretsiz sürümle ne kadar süre kullanabilirim?",
+    a: "Ücretsiz Basic sürümün süre sınırı yoktur. İspanya pazarı için 50 geri dönüşüm kredisi ve 1 kullanıcı hesabıyla hemen başlayabilirsiniz. Kapasite veya pazar ihtiyacınız arttıkça ücretli planlara geçiş yapabilirsiniz.",
+  },
+  {
+    q: "Verilerimizin güvenliği nasıl sağlanıyor?",
+    a: "Packaging Cockpit, GDPR uyumlu bir bilgi güvenliği konseptiyle çalışır. Veriler izole ortamlarda saklanır, yetkilendirme sistemi ile sadece tanımlı kullanıcılar erişebilir.",
+  },
+  {
+    q: "Türkçe kullanılabilir mi?",
+    a: "Platform arayüzü şu an İngilizce ve Almanca'dır. MAT Ambalaj Çözümleri olarak Türkçe eğitim, dokümantasyon ve destek sağlıyoruz. Türkçe arayüz için yol haritası mevcut.",
+  },
+  {
+    q: "Rapor çıktıları hangi formatlarda alınır?",
+    a: "PDF raporlar (müşteri sunumları için), Excel export (ileri analiz için), API endpoints (sistem entegrasyonu için) ve dashboard görselleştirmeleri.",
+  },
+  {
+    q: "Küçük bir şirket olarak da kullanabilir miyim?",
+    a: "Evet. Esnek lisanslama modeli, KOBİ'lerden çok uluslu şirketlere kadar farklı ölçeklere uyum sağlar. 50 SKU'luk bir portföyden 50.000 SKU'ya kadar müşteri profilimiz var.",
+  },
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Sıkça Sorulan Sorular
+      </h2>
+      <p class="text-lg text-gray-600">
+        Aklınızdaki soruların yanıtları burada. Farklı bir sorunuz var mı? <a href="#iletisim" class="text-brand-teal font-medium hover:underline">Bize yazın.</a>
+      </p>
+    </div>
+
+    <div data-reveal-group class="space-y-3" id="faq-accordion">
+      {faqs.map((item, i) => (
+        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <button
+            class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center gap-4 hover:bg-gray-50 transition-colors duration-150"
+            aria-expanded="false"
+            aria-controls={`faq-${i}`}>
+            <span class="font-semibold text-gray-900 text-base">{item.q}</span>
+            <svg class="faq-icon flex-shrink-0 w-5 h-5 text-brand-teal transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id={`faq-${i}`} class="faq-answer hidden px-6 pb-5">
+            <p class="text-gray-600 leading-relaxed text-sm">{item.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling as HTMLElement;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+
+      btn.setAttribute('aria-expanded', String(!expanded));
+      answer.classList.toggle('hidden', expanded);
+      icon.style.transform = expanded ? '' : 'rotate(180deg)';
+    });
+  });
+</script>

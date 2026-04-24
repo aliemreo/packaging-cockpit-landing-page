@@ -1,0 +1,224 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource-variable/inter/index.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedOGImage = new URL("/opengraph.jpg", Astro.site).toString();
+
+const { title, description } = Astro.props;
+
+const siteTitle = title
+  ? title
+  : "Packaging Cockpit Türkiye | Ambalajda Sürdürülebilirlik ve PPWR Uyumluluğu - MAT Consultancy";
+
+const siteDescription = description
+  ? description
+  : "Packaging Cockpit ile ambalaj geri dönüşülebilirliği ve yaşam döngüsü analizi. EU PPWR uyumluluğu için Türkiye'nin yetkili partneri MAT Consultancy'den danışmanlık ve implementasyon.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://packagingcockpit.matpack.net/#organization",
+      "name": "MAT Ambalaj Çözümleri",
+      "url": "https://packagingcockpit.matpack.net",
+      "email": "info@matpack.net",
+      "description": "Türkiye'nin ambalaj sürdürülebilirliği ve PPWR uyum çözümleri firması. Packaging Cockpit Türkiye Yetkili Satıcısı.",
+      "areaServed": "TR",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://packagingcockpit.matpack.net/#website",
+      "url": "https://packagingcockpit.matpack.net",
+      "name": "Packaging Cockpit Türkiye",
+      "publisher": { "@id": "https://packagingcockpit.matpack.net/#organization" },
+      "inLanguage": "tr",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://packagingcockpit.matpack.net/#service",
+      "name": "Packaging Cockpit Platform — Türkiye",
+      "provider": { "@id": "https://packagingcockpit.matpack.net/#organization" },
+      "description": "Ambalajın geri dönüşülebilirlik analizi ve yaşam döngüsü değerlendirmesi (LCA) için web tabanlı B2B SaaS platform. EU PPWR uyumluluğu için bilimsel standartlarla hesaplama.",
+      "areaServed": "TR",
+      "serviceType": "Packaging Sustainability Software",
+    },
+  ],
+};
+---
+
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEO
+      title={siteTitle}
+      description={siteDescription}
+      canonical={canonicalURL}
+      twitter={{
+        card: "summary_large_image",
+        site: "@matpack",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: siteTitle,
+          image: resolvedOGImage,
+        },
+        image: {
+          alt: "Packaging Cockpit Türkiye — MAT Consultancy",
+        },
+        optional: {
+          locale: "tr_TR",
+          siteName: "Packaging Cockpit Türkiye",
+        },
+      }}
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-teal z-[100] transition-none" style="width:0%"></div>
+
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <style is:global>
+      /* Lenis smooth scroll setup */
+      html.lenis, html.lenis body {
+        height: auto;
+      }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+
+      img {
+        content-visibility: auto;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #0F766E; border-radius: 999px; }
+      ::-webkit-scrollbar-thumb:hover { background: #0d6460; }
+
+      /* Scroll-reveal — ease-out-expo easing for cinematic feel */
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(36px);
+        filter: blur(6px);
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      /* Stagger group */
+      [data-reveal-group] > * {
+        opacity: 0;
+        transform: translateY(32px);
+        filter: blur(4px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      [data-reveal-group] > *.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+      [data-reveal-group] > *:nth-child(1) { transition-delay: 0ms; }
+      [data-reveal-group] > *:nth-child(2) { transition-delay: 90ms; }
+      [data-reveal-group] > *:nth-child(3) { transition-delay: 180ms; }
+      [data-reveal-group] > *:nth-child(4) { transition-delay: 270ms; }
+      [data-reveal-group] > *:nth-child(5) { transition-delay: 360ms; }
+      [data-reveal-group] > *:nth-child(6) { transition-delay: 450ms; }
+      [data-reveal-group] > *:nth-child(7) { transition-delay: 540ms; }
+      [data-reveal-group] > *:nth-child(8) { transition-delay: 630ms; }
+    </style>
+
+    <script>
+      import Lenis from 'lenis';
+
+      // 1. Lenis smooth scroll
+      const lenis = new Lenis({
+        duration: 1.25,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease-out
+        orientation: 'vertical',
+        smoothWheel: true,
+      });
+
+      // Wire Lenis to anchor links in the navbar
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const id = (anchor as HTMLAnchorElement).getAttribute('href')!.slice(1);
+          const target = document.getElementById(id);
+          if (target) lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+        });
+      });
+
+      // RAF loop
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // 2. Scroll progress bar
+      const bar = document.getElementById('scroll-progress');
+      lenis.on('scroll', ({ progress }: { progress: number }) => {
+        if (bar) bar.style.width = (progress * 100) + '%';
+      });
+
+      // 3. Scroll-reveal with IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+
+          if (el.hasAttribute('data-reveal')) {
+            el.classList.add('is-visible');
+            observer.unobserve(el);
+          } else if (el.hasAttribute('data-reveal-group')) {
+            el.querySelectorAll<HTMLElement>(':scope > *').forEach((child) => {
+              child.classList.add('is-visible');
+            });
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('[data-reveal], [data-reveal-group]').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

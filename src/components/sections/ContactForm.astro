@@ -1,0 +1,194 @@
+---
+---
+
+<section id="iletisim" class="py-20 bg-brand-navy">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div data-reveal-group class="grid lg:grid-cols-2 gap-14 items-start">
+
+      <!-- Left copy -->
+      <div class="text-white">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-5 leading-tight">
+          Ambalaj Geleceğinizi<br />
+          <span class="text-brand-amber">Bugünden Tasarlayın</span>
+        </h2>
+        <p class="text-blue-200 text-lg leading-relaxed mb-8">
+          30 dakikalık ücretsiz bir demo görüşmesinde, Packaging Cockpit'in şirketinize özel faydalarını somut örneklerle gösterelim. Taahhüt yok, sadece bilgi ve fırsat.
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-amber mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <p class="text-blue-200 text-sm">Ürün portföyünüze özel geri dönüşülebilirlik analizi</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-amber mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <p class="text-blue-200 text-sm">AB pazarlarınız için PPWR uyum değerlendirmesi</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-amber mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <p class="text-blue-200 text-sm">Mevcut ERP/PIM sisteminizle entegrasyon planı</p>
+          </div>
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-blue-800">
+          <p class="text-blue-300 text-sm mb-2">Direkt iletişim tercih ediyorsanız:</p>
+          <a
+            href="mailto:info@matpack.net?subject=Packaging%20Cockpit%20Demo%20Talebi"
+            class="text-white font-semibold hover:text-brand-amber transition-colors duration-150">
+            info@matpack.net
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bg-white rounded-2xl p-8 shadow-xl">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Demo Talep Formu</h3>
+
+        <form
+          id="demo-form"
+          action="https://formspree.io/f/xjgjlpqk"
+          method="POST"
+          class="space-y-4">
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                Ad Soyad <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Ahmet Yılmaz"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-teal focus:border-brand-teal outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-1">
+                Şirket <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                required
+                placeholder="Şirket A.Ş."
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-teal focus:border-brand-teal outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+              E-posta <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="ahmet@sirket.com"
+              class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-teal focus:border-brand-teal outline-none transition-colors"
+            />
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+                Telefon <span class="text-gray-400 text-xs">(opsiyonel)</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+90 555 000 0000"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-teal focus:border-brand-teal outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="position" class="block text-sm font-medium text-gray-700 mb-1">
+                Pozisyon <span class="text-gray-400 text-xs">(opsiyonel)</span>
+              </label>
+              <input
+                type="text"
+                id="position"
+                name="position"
+                placeholder="Sürdürülebilirlik Müdürü"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-teal focus:border-brand-teal outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
+              Mesaj / İhtiyaç <span class="text-gray-400 text-xs">(opsiyonel)</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Ambalaj portföyünüz, hedef pazarlarınız veya özel ihtiyaçlarınız hakkında bilgi paylaşabilirsiniz..."
+              class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-teal focus:border-brand-teal outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full py-3.5 bg-brand-amber text-white font-bold rounded-lg hover:bg-amber-600 transition-colors duration-150 text-base shadow">
+            Demo Talep Et
+          </button>
+        </form>
+
+        <!-- Success message -->
+        <div id="form-success" class="hidden text-center py-6">
+          <div class="text-4xl mb-3">✅</div>
+          <h4 class="font-bold text-gray-900 text-lg mb-2">Talebiniz Alındı!</h4>
+          <p class="text-gray-600 text-sm">En kısa sürede sizinle iletişime geçeceğiz. Teşekkür ederiz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('demo-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Gönderiliyor...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } else {
+        btn.textContent = 'Hata oluştu, tekrar deneyin.';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Hata oluştu, tekrar deneyin.';
+      btn.disabled = false;
+    }
+  });
+</script>

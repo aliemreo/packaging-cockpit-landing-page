@@ -1,0 +1,65 @@
+---
+const brands = ["SPAR Austria", "BILLA", "BIPA", "PreZero"];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="flex justify-center mb-6">
+          <img
+            src="/images/logo-pc.png"
+            alt="Packaging Cockpit"
+            class="h-12 w-auto object-contain"
+            width="200"
+            height="48"
+          />
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Avrupa'nın Öncü Markaları<br />
+          <span class="text-brand-teal">Packaging Cockpit'e Güveniyor</span>
+        </h2>
+      </div>
+
+      <!-- Brand logos as text chips -->
+      <div data-reveal-group class="flex flex-wrap justify-center gap-4 mb-12">
+        {brands.map((brand) => (
+          <div class="px-6 py-3 bg-gray-100 rounded-xl text-gray-700 font-bold text-lg tracking-wide">
+            {brand}
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-gray-600 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+        SPAR Austria, BILLA, BIPA ve PreZero gibi şirketler özel marka (private label) ambalaj verilerini Packaging Cockpit üzerinden yönetiyor. Platform, World Packaging Organization (WPO) ve FH Campus Wien ile bilimsel işbirliği içinde sürekli güncelleniyor.
+      </p>
+
+      <!-- Scientific backing -->
+      <div data-reveal-group class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-brand-navy/5 border border-brand-navy/20 rounded-xl p-6 text-center">
+          <div class="text-2xl mb-3">🎓</div>
+          <h3 class="font-bold text-brand-navy mb-2">FH Campus Wien</h3>
+          <p class="text-sm text-gray-600">Circular Packaging Design Guidelines — bilimsel metodoloji temeli</p>
+        </div>
+        <div class="bg-brand-teal/5 border border-brand-teal/20 rounded-xl p-6 text-center">
+          <div class="text-2xl mb-3">🌐</div>
+          <h3 class="font-bold text-brand-teal mb-2">World Packaging Organization</h3>
+          <p class="text-sm text-gray-600">WPO standartları ve uluslararası bilimsel işbirliği</p>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="https://packaging-cockpit.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-brand-teal font-semibold hover:underline text-sm">
+          Packaging Cockpit resmi sitesini ziyaret edin
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

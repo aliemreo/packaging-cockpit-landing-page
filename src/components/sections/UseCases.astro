@@ -1,0 +1,75 @@
+---
+const personas = [
+  {
+    icon: "🏭",
+    title: "Ambalaj Üreticileri",
+    body: "Müşterilerinize sürdürülebilir ambalaj alternatifleri sunun. Farklı tasarımların geri dönüşülebilirlik ve maliyet etkisini veriye dayalı karşılaştırın. Rekabet avantajı elde edin.",
+    tag: "Üretim",
+    tagColor: "bg-teal-100 text-teal-700",
+    iconBg: "bg-teal-100",
+    stripe: "bg-teal-400",
+  },
+  {
+    icon: "🛍️",
+    title: "Marka Sahipleri",
+    subtitle: "FMCG, Gıda, Kozmetik",
+    body: "Ürün portföyünüzün AB pazarlarındaki uyumluluk durumunu görün. PPWR hazırlığı yapın, plastik vergi maliyetlerini optimize edin, sürdürülebilirlik raporlamanızı veri ile besleyin.",
+    tag: "FMCG & Kozmetik",
+    tagColor: "bg-blue-100 text-blue-700",
+    iconBg: "bg-blue-100",
+    stripe: "bg-blue-400",
+  },
+  {
+    icon: "🏪",
+    title: "Perakende Zincirleri",
+    body: "Özel markalı (private label) ürünlerinizin ambalaj verilerini merkezi olarak yönetin. Tedarikçi verilerini standardize edin, sürdürülebilirlik hedeflerinize ulaşın.",
+    tag: "Perakende",
+    tagColor: "bg-purple-100 text-purple-700",
+    iconBg: "bg-purple-100",
+    stripe: "bg-purple-400",
+  },
+  {
+    icon: "🚢",
+    title: "İhracatçılar",
+    body: "Hedef pazarlarınızın ülke-spesifik regülasyonlarına göre ambalajlarınızı değerlendirin. Gümrük ve uyum süreçlerinde gerekli dokümantasyonu hızlıca oluşturun.",
+    tag: "İhracat",
+    tagColor: "bg-amber-100 text-amber-700",
+    iconBg: "bg-amber-100",
+    stripe: "bg-amber-400",
+  },
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Kimler İçin?
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Packaging Cockpit, ambalaj değer zincirinin her halkasında değer yaratır.
+      </p>
+    </div>
+
+    <div data-reveal-group class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {personas.map((p) => (
+        <div class="group relative flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+          <!-- Top colored stripe -->
+          <div class={`h-1 w-full ${p.stripe}`}></div>
+          <div class="p-7 flex flex-col flex-1">
+            <!-- Icon in badge -->
+            <div class={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${p.iconBg} text-3xl mb-5`}>
+              {p.icon}
+            </div>
+            <div class="mb-3">
+              <span class={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${p.tagColor} mb-2`}>{p.tag}</span>
+              <h3 class="font-bold text-gray-900 text-base leading-tight group-hover:text-brand-teal transition-colors duration-200">{p.title}</h3>
+              {p.subtitle && <p class="text-xs text-gray-400 mt-0.5">{p.subtitle}</p>}
+            </div>
+            <p class="text-gray-600 text-[15px] leading-relaxed flex-1">{p.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

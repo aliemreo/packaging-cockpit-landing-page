@@ -1,0 +1,80 @@
+---
+const features = [
+  {
+    icon: "♻️",
+    title: "Geri Dönüşülebilirlik Analizi",
+    body: "Ambalajın malzeme kompozisyonu, tasarımı ve ülkedeki atık yönetim altyapısı dikkate alınarak bilimsel geri dönüşülebilirlik skoru hesaplanır. Alman ZSVR minimum standartlarıyla uyumlu.",
+  },
+  {
+    icon: "🌍",
+    title: "Yaşam Döngüsü Değerlendirmesi (LCA)",
+    body: "Hammadde çıkarımından üretim, kullanım ve bertaraf süreçlerine kadar tüm aşamalardaki çevresel etki, CO₂eq cinsinden ölçülür. Uluslararası bilimsel topluluk tarafından validate edilmiş metodoloji.",
+  },
+  {
+    icon: "🗺️",
+    title: "Ülke-Spesifik Hesaplama",
+    body: "Her AB ülkesinin kendine özgü atık yönetimi altyapısı ve mevzuatına göre ayrı değerlendirme. İhracat pazarlarınız için 27 AB ülkesi dahil özel analizler.",
+  },
+  {
+    icon: "💰",
+    title: "Maliyet ve Vergi Optimizasyonu",
+    body: "Plastik vergileri, lisans ücretleri ve EPR bedellerini ülke bazında hesaplar. Farklı ambalaj tasarımlarının finansal etkisini karşılaştırmanıza olanak tanır.",
+  },
+  {
+    icon: "🔗",
+    title: "GS1 Entegrasyonu",
+    body: "GTIN ve GLN standartlarıyla tam uyumlu. Mevcut ERP ve PIM sistemlerinizle entegrasyon imkanı (SAP, Oracle, Microsoft Dynamics).",
+  },
+  {
+    icon: "📦",
+    title: "Portfolio ve İş Akışı Yönetimi",
+    body: "Tüm ambalaj envanterini merkezi olarak yönet, tedarikçilerden veri import et, müşterilere rapor export et. Versiyon kontrolü ve yetkilendirme sistemi dahil.",
+  },
+];
+---
+
+<section id="ozellikler" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Packaging Cockpit:<br />
+        <span class="text-brand-teal">Bilim Temelli Ambalaj Karar Platformu</span>
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+        Packaging Cockpit, ambalajlarınızın çeşitli metriklerini hesaplamanıza olanak tanıyan kapsamlı bir çevrimiçi araçtır. Hedef pazara bağlı olarak ülkeye özel geri dönüştürülebilirlik oranlarını, karbon ayak izini ve bir yaşam döngüsü analizinin diğer etki kategorilerini hesaplamak mümkündür. Ayrıca toplanan verileri araç içinde yönetebilir ve seçtiğiniz müşteriler veya tedarikçilerle paylaşabilirsiniz. Platform, FH Campus Wien'in Circular Packaging Design Guidelines'ı ve World Packaging Organization standartları üzerine kurulmuştur.
+      </p>
+      <!-- Award badge -->
+      <div class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-5 py-2">
+        <span class="text-amber-500">🏅</span>
+        <span class="text-sm font-semibold text-amber-700">Federal Ecodesign Award 2024 Adayı</span>
+      </div>
+    </div>
+
+    <div data-reveal-group class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((f, i) => (
+        <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-7 overflow-hidden">
+          <!-- Subtle background accent -->
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-teal-50 to-transparent rounded-bl-full opacity-60"></div>
+          <!-- Icon badge -->
+          <div class="relative inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-brand-teal/10 to-brand-teal/20 text-2xl mb-5 group-hover:from-brand-teal/20 group-hover:to-brand-teal/30 transition-colors duration-300">
+            {f.icon}
+          </div>
+          <!-- Index number -->
+          <span class="absolute top-6 right-7 text-xs font-bold text-gray-200 select-none">0{i + 1}</span>
+          <h3 class="font-bold text-gray-900 text-base mb-2 group-hover:text-brand-teal transition-colors duration-200">{f.title}</h3>
+          <p class="text-gray-600 text-[15px] leading-relaxed">{f.body}</p>
+          <!-- Bottom accent line -->
+          <div class="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-teal group-hover:w-full transition-all duration-500 rounded-full"></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a
+        href="#iletisim"
+        class="inline-flex items-center justify-center px-8 py-3.5 bg-brand-teal text-white font-semibold rounded-lg hover:bg-teal-800 transition-colors duration-150 text-base shadow">
+        Platformu Keşfedin — Demo Talep Et
+      </a>
+    </div>
+  </div>
+</section>

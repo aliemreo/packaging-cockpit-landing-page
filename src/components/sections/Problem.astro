@@ -1,0 +1,73 @@
+---
+const problems = [
+  {
+    icon: "⚖️",
+    title: "Regülasyon Baskısı",
+    body: "2030 yılına kadar AB pazarına giren tüm ambalajların geri dönüştürülebilir olması zorunlu olacak. PPWR (Packaging and Packaging Waste Regulation) Türk ihracatçıları doğrudan etkiliyor. Uyum sağlayamayan ürünler raf bulamıyor.",
+    accent: "border-red-400",
+    iconBg: "bg-red-50",
+  },
+  {
+    icon: "📈",
+    title: "Artan Maliyetler",
+    body: "Plastik vergileri, EPR (Genişletilmiş Üretici Sorumluluğu) ücretleri ve lisans bedelleri, geri dönüşülebilirliği düşük ambalajlar için katlanarak artıyor. Almanya'da ambalaj başına maliyetler %300'e varan artış gösterdi.",
+    accent: "border-orange-400",
+    iconBg: "bg-orange-50",
+  },
+  {
+    icon: "📊",
+    title: "Veri Eksikliği",
+    body: "Ambalajınızın gerçek çevresel etkisini biliyor musunuz? Çoğu şirket CO₂ ayak izini, ülkeye göre geri dönüşülebilirlik oranını ve gerçek maliyet yapısını veriye dayalı olarak hesaplayamıyor.",
+    accent: "border-yellow-400",
+    iconBg: "bg-yellow-50",
+  },
+  {
+    icon: "🏆",
+    title: "Rekabet Avantajı",
+    body: "Büyük perakendeciler ve markalar artık tedarikçilerinden sürdürülebilirlik sertifikaları ve detaylı LCA raporları talep ediyor. Veri üretemeyen şirketler tedarik zincirinden düşüyor.",
+    accent: "border-blue-400",
+    iconBg: "bg-blue-50",
+  },
+];
+---
+
+<section id="cozum" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Türkiye Ambalaj Sektörü<br />
+        <span class="text-brand-navy">Kritik Bir Dönüm Noktasında</span>
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Küresel regülasyonlar ve pazar beklentileri, ambalaj sektöründe köklü bir dönüşümü zorunlu kılıyor.
+      </p>
+    </div>
+
+    <div data-reveal-group class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {problems.map((p, i) => (
+        <div class="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-7 overflow-hidden">
+          <!-- Diagonal background accent -->
+          <div class={`absolute -top-6 -right-6 w-20 h-20 rounded-full opacity-10 ${p.iconBg}`}></div>
+          <!-- Step number -->
+          <span class="absolute top-5 right-6 text-xs font-bold text-gray-200 select-none">0{i + 1}</span>
+          <!-- Icon badge -->
+          <div class={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${p.iconBg} text-2xl mb-5 group-hover:scale-110 transition-transform duration-300`}>
+            {p.icon}
+          </div>
+          <h3 class="font-bold text-gray-900 text-base mb-2">{p.title}</h3>
+          <p class="text-gray-600 text-[15px] leading-relaxed">{p.body}</p>
+          <!-- Bottom accent line on hover -->
+          <div class={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500 rounded-full ${p.accent.replace('border-', 'bg-')}`}></div>
+        </div>
+      ))}
+    </div>
+
+    <div data-reveal class="mt-12 text-center">
+      <blockquote class="inline-block bg-white border-l-4 border-brand-teal px-8 py-5 rounded-r-xl shadow-sm max-w-2xl">
+        <p class="text-gray-700 font-medium text-lg italic">
+          "Bu değişime hazır olmak bir tercih değil, pazarda kalabilmenin şartı."
+        </p>
+      </blockquote>
+    </div>
+  </div>
+</section>
