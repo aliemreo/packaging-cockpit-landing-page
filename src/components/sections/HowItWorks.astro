@@ -1,33 +1,15 @@
 ---
-const steps = [
-  {
-    number: "01",
-    title: "Kayıt ve Kurulum",
-    body: "MAT Consultancy ekibi, platforma erişim ve ilk kurulumu sizin için gerçekleştirir. Mevcut ambalaj verilerinizi migrate etmenize yardımcı olur.",
-    detail: "Ortalama 1–2 iş günü içinde erişim aktif hale gelir. Dedicated onboarding uzmanı size eşlik eder.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/><path d="M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/><path d="M18 10.5h3m-1.5-1.5v3"/></svg>`,
-  },
-  {
-    number: "02",
-    title: "Veri Girişi",
-    body: "Ambalaj birimlerinizi (şişe, kutu, etiket vb.) bileşen bazında tanımlayın. GS1 standartlarıyla veya manuel olarak veri girişi yapılabilir.",
-    detail: "Toplu import özelliği ile mevcut Excel/CSV tablolarınızı saniyeler içinde platforma aktarın.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>`,
-  },
-  {
-    number: "03",
-    title: "Analiz ve Raporlama",
-    body: "Tek tıkla hedef pazarlarınız için geri dönüşülebilirlik ve LCA analizleri oluşturun. PDF raporlar ve dashboard görselleştirmeler.",
-    detail: "27 AB ülkesinin her biri için ayrı hesaplama. CO₂eq, geri dönüşüm skoru ve plastik vergi tahmini tek ekranda.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75Z"/><path d="M9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625Z"/><path d="M16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>`,
-  },
-  {
-    number: "04",
-    title: "Optimizasyon",
-    body: "Alternatif ambalaj tasarımlarını karşılaştırın, maliyet-etki analizi yapın, MAT Consultancy'nin uzman danışmanlığıyla iyileştirme yol haritası çıkarın.",
-    detail: "Simülasyon modülüyle 'eğer şu malzemeyi kullansaydım ne olurdu?' sorusuna anında yanıt alın.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/><path d="M18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>`,
-  },
+import { ui, type Lang } from "@i18n/ui";
+
+export interface Props { lang?: Lang; }
+const { lang = "tr" } = Astro.props;
+const t = ui[lang].howItWorks;
+
+const stepIcons = [
+  `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/><path d="M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/><path d="M18 10.5h3m-1.5-1.5v3"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75Z"/><path d="M9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625Z"/><path d="M16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/><path d="M18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>`,
 ];
 ---
 
@@ -35,21 +17,21 @@ const steps = [
 <section id="nasil-calisir" class="lg:hidden bg-white py-20 px-4 sm:px-6">
   <div class="max-w-xl mx-auto">
     <div class="text-center mb-12">
-      <p class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-3">Süreç</p>
-      <h2 class="text-3xl font-bold text-gray-900 mb-3">Nasıl Çalışır?</h2>
-      <p class="text-gray-500">Dört adımda sürdürülebilirlik yolculuğuna başlayın.</p>
+      <p class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-3">{t.processLabel}</p>
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">{t.title}</h2>
+      <p class="text-gray-500">{t.subtitle}</p>
     </div>
     <div class="space-y-0">
-      {steps.map((step, i) => (
+      {t.steps.map((step, i) => (
         <div data-reveal class="flex gap-5">
           <div class="flex flex-col items-center flex-shrink-0">
             <div class="w-11 h-11 rounded-full bg-brand-teal text-white flex items-center justify-center font-bold text-sm shadow">
               {step.number}
             </div>
-            {i < steps.length - 1 && <div class="w-px flex-1 bg-gray-200 my-1 min-h-[40px]" />}
+            {i < t.steps.length - 1 && <div class="w-px flex-1 bg-gray-200 my-1 min-h-[40px]" />}
           </div>
           <div class="pb-10">
-            <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand-teal flex items-center justify-center mb-3" set:html={step.icon} />
+            <div class="w-10 h-10 rounded-xl bg-teal-50 text-brand-teal flex items-center justify-center mb-3" set:html={stepIcons[i]} />
             <h3 class="font-bold text-gray-900 text-lg mb-2">{step.title}</h3>
             <p class="text-gray-600 text-sm leading-relaxed mb-2">{step.body}</p>
             <p class="text-brand-teal text-xs font-medium">{step.detail}</p>
@@ -60,28 +42,24 @@ const steps = [
   </div>
 </section>
 
-<!-- ─── DESKTOP: true pinned sticky section ─── -->
+<!-- ─── DESKTOP: pinned sticky section ─── -->
 <div
   id="how-outer"
   class="hidden lg:block bg-white relative"
-  style={`height: ${(steps.length + 1) * 100}vh`}>
+  style={`height: ${(t.steps.length + 1) * 100}vh`}>
 
   <div id="how-inner" class="sticky top-0 h-screen overflow-hidden flex items-center">
     <div class="w-full max-w-7xl mx-auto px-8 grid grid-cols-[380px_1fr] gap-24 items-center h-full">
 
-      <!-- LEFT: always visible -->
       <div>
-        <p class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-4">Süreç</p>
+        <p class="text-brand-teal text-sm font-semibold uppercase tracking-widest mb-4">{t.processLabel}</p>
         <h2 class="text-4xl font-bold text-gray-900 mb-5 leading-tight">
-          Nasıl<br />Çalışır?
+          {t.title.split('?')[0]}<br />{t.title.includes('?') ? '?' : ''}
         </h2>
-        <p class="text-gray-500 leading-relaxed mb-10 text-sm">
-          Dört adımda ambalaj portföyünüzün sürdürülebilirlik yolculuğuna başlayın. MAT Consultancy ekibi her aşamada yanınızda.
-        </p>
+        <p class="text-gray-500 leading-relaxed mb-10 text-sm">{t.subtitleDesktop}</p>
 
-        <!-- Step list -->
         <div class="space-y-3">
-          {steps.map((step, i) => (
+          {t.steps.map((step, i) => (
             <div class="how-indicator flex items-center gap-4" data-idx={i}>
               <div class="how-dot w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-xs font-bold text-gray-400 flex-shrink-0 transition-all duration-500">
                 {step.number}
@@ -93,21 +71,19 @@ const steps = [
           ))}
         </div>
 
-        <!-- Progress bar -->
         <div class="mt-8 w-28 h-1 bg-gray-100 rounded-full overflow-hidden">
           <div id="how-progress" class="h-full bg-brand-teal rounded-full transition-all duration-500" style="width:25%" />
         </div>
       </div>
 
-      <!-- RIGHT: step panels -->
       <div class="relative h-full flex items-center">
-        {steps.map((step, i) => (
+        {t.steps.map((step, i) => (
           <div
             class="how-panel absolute inset-0 flex items-center transition-all duration-700"
             data-panel={i}
             style={i === 0 ? "opacity:1;transform:translateY(0)" : "opacity:0;transform:translateY(48px);pointer-events:none"}>
             <div class="max-w-lg w-full">
-              <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-teal-50 border border-teal-100 text-brand-teal mb-8 shadow-sm" set:html={step.icon} />
+              <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-teal-50 border border-teal-100 text-brand-teal mb-8 shadow-sm" set:html={stepIcons[i]} />
               <div class="flex items-center gap-3 mb-4">
                 <span class="text-brand-teal font-bold text-sm tracking-widest uppercase">{step.number}</span>
                 <div class="h-px w-12 bg-gray-200" />
@@ -124,17 +100,15 @@ const steps = [
           </div>
         ))}
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- Bottom stat -->
 <div class="hidden lg:block border-t border-gray-100 bg-gray-50">
   <div data-reveal class="max-w-7xl mx-auto px-8 py-8 text-center">
-    <p class="text-sm text-gray-500 font-medium uppercase tracking-wide mb-1">Tipik başlangıç süresi</p>
-    <p class="text-3xl font-bold text-brand-teal">2–4 Hafta</p>
-    <p class="text-gray-400 text-sm mt-1">Kurulum, veri migrasyonu ve temel eğitim dahil.</p>
+    <p class="text-sm text-gray-500 font-medium uppercase tracking-wide mb-1">{t.statLabel}</p>
+    <p class="text-3xl font-bold text-brand-teal">{t.statValue}</p>
+    <p class="text-gray-400 text-sm mt-1">{t.statDetail}</p>
   </div>
 </div>
 

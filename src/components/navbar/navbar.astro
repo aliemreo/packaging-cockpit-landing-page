@@ -1,15 +1,13 @@
 ---
 import Container from "@components/container.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+import { ui, type Lang } from "@i18n/ui";
 
-const navItems = [
-  { title: "Çözüm", path: "#cozum" },
-  { title: "Özellikler", path: "#ozellikler" },
-  { title: "Neden MAT", path: "#neden-mat" },
-  { title: "Fiyatlar", path: "#fiyatlandirma" },
-  { title: "İletişim", path: "#iletisim" },
-];
+export interface Props { lang?: Lang; }
+const { lang = "tr" } = Astro.props;
+const t = ui[lang].nav;
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 
 <div class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
@@ -19,9 +17,10 @@ const navItems = [
         <div class="flex w-full lg:w-auto items-center justify-between">
           <a href={base} class="flex items-center gap-2" aria-label="MAT Ambalaj Çözümleri Ana Sayfa">
             <img
+              id="nav-logo"
               src={`${base}images/logo-mat.png`}
               alt="MAT Ambalaj Çözümleri"
-              class="h-10 lg:h-16 w-auto object-contain"
+              class="h-10 lg:h-16 w-auto object-contain transition-opacity duration-300 opacity-0"
               width="256"
               height="64"
             />
@@ -34,7 +33,7 @@ const navItems = [
           <!-- Mobile dropdown panel -->
           <div class="lg:hidden border-t border-gray-100 mt-3 pt-3 pb-4">
             <ul class="flex flex-col gap-1">
-              {navItems.map((item) => (
+              {t.items.map((item) => (
                 <li>
                   <a
                     href={item.path}
@@ -44,17 +43,22 @@ const navItems = [
                 </li>
               ))}
             </ul>
-            <div class="mt-4 px-1">
+            <div class="mt-4 px-1 flex gap-2">
               <a
                 href="#iletisim"
-                class="block w-full text-center py-3 bg-brand-amber text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-150 text-sm">
-                Demo Talep Et
+                class="flex-1 block text-center py-3 bg-brand-amber text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-150 text-sm">
+                {t.cta}
+              </a>
+              <a
+                href={t.altHref}
+                class="flex items-center justify-center w-12 py-3 border border-gray-200 rounded-lg text-sm font-bold text-gray-600 hover:border-brand-teal hover:text-brand-teal transition-colors duration-150">
+                {t.altLabel}
               </a>
             </div>
           </div>
           <!-- Desktop nav -->
           <ul class="hidden lg:flex lg:flex-row lg:gap-1">
-            {navItems.map((item) => (
+            {t.items.map((item) => (
               <li>
                 <a
                   href={item.path}
@@ -64,11 +68,18 @@ const navItems = [
               </li>
             ))}
           </ul>
-          <div class="hidden lg:block lg:ml-4">
+          <div class="hidden lg:flex lg:items-center lg:gap-2 lg:ml-4">
+            <!-- Lang toggle -->
+            <a
+              href={t.altHref}
+              class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 text-sm font-bold text-gray-500 hover:border-brand-teal hover:text-brand-teal transition-colors duration-150"
+              aria-label="Switch language">
+              {t.altLabel}
+            </a>
             <a
               href="#iletisim"
               class="inline-block px-5 py-2.5 bg-brand-amber text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-150 text-sm">
-              Demo Talep Et
+              {t.cta}
             </a>
           </div>
         </MenuItems>
@@ -76,3 +87,19 @@ const navItems = [
     </header>
   </Container>
 </div>
+
+<script>
+  const navLogo = document.getElementById("nav-logo");
+  const heroLogos = document.querySelector(".hero-logos");
+
+  if (navLogo && heroLogos) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        navLogo.classList.toggle("opacity-0", entry.isIntersecting);
+        navLogo.classList.toggle("opacity-100", !entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(heroLogos);
+  }
+</script>

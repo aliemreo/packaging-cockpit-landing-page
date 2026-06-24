@@ -3,26 +3,23 @@ import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
+import { ui, type Lang } from "@i18n/ui";
 
 export interface Props {
   title?: string;
   description?: string;
+  lang?: Lang;
 }
 
+const { title, description, lang = "tr" } = Astro.props;
+const t = ui[lang];
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-
 const resolvedOGImage = new URL("/opengraph.jpg", Astro.site).toString();
-
-const { title, description } = Astro.props;
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
-const siteTitle = title
-  ? title
-  : "Packaging Cockpit Türkiye | Ambalajda Sürdürülebilirlik ve PPWR Uyumluluğu - MAT Consultancy";
-
-const siteDescription = description
-  ? description
-  : "Packaging Cockpit ile ambalaj geri dönüşülebilirliği ve yaşam döngüsü analizi. EU PPWR uyumluluğu için Türkiye'nin yetkili partneri MAT Consultancy'den danışmanlık ve implementasyon.";
+const siteTitle = title ?? t.seo.title;
+const siteDescription = description ?? t.seo.description;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -42,7 +39,7 @@ const jsonLd = {
       "url": "https://packagingcockpit.matpack.net",
       "name": "Packaging Cockpit Türkiye",
       "publisher": { "@id": "https://packagingcockpit.matpack.net/#organization" },
-      "inLanguage": "tr",
+      "inLanguage": lang,
     },
     {
       "@type": "Service",
@@ -58,7 +55,7 @@ const jsonLd = {
 ---
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang={t.seo.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -84,7 +81,7 @@ const jsonLd = {
           alt: "Packaging Cockpit Türkiye — MAT Consultancy",
         },
         optional: {
-          locale: "tr_TR",
+          locale: t.seo.ogLocale,
           siteName: "Packaging Cockpit Türkiye",
         },
       }}
@@ -96,35 +93,24 @@ const jsonLd = {
     <!-- Scroll progress bar -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-brand-teal z-[100] transition-none" style="width:0%"></div>
 
-    <Navbar />
+    <Navbar lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
 
     <style is:global>
-      /* Lenis smooth scroll setup */
-      html.lenis, html.lenis body {
-        height: auto;
-      }
-      .lenis.lenis-smooth {
-        scroll-behavior: auto !important;
-      }
-      .lenis.lenis-smooth [data-lenis-prevent] {
-        overscroll-behavior: contain;
-      }
+      html.lenis, html.lenis body { height: auto; }
+      .lenis.lenis-smooth { scroll-behavior: auto !important; }
+      .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 
-      img {
-        content-visibility: auto;
-      }
+      img { content-visibility: auto; }
 
-      /* Custom scrollbar */
       ::-webkit-scrollbar { width: 5px; }
       ::-webkit-scrollbar-track { background: transparent; }
       ::-webkit-scrollbar-thumb { background: #0F766E; border-radius: 999px; }
       ::-webkit-scrollbar-thumb:hover { background: #0d6460; }
 
-      /* Scroll-reveal — ease-out-expo easing for cinematic feel */
       [data-reveal] {
         opacity: 0;
         transform: translateY(36px);
@@ -134,13 +120,8 @@ const jsonLd = {
           transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
           filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      [data-reveal].is-visible {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+      [data-reveal].is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-      /* Stagger group */
       [data-reveal-group] > * {
         opacity: 0;
         transform: translateY(32px);
@@ -150,11 +131,7 @@ const jsonLd = {
           transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
           filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      [data-reveal-group] > *.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+      [data-reveal-group] > *.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
       [data-reveal-group] > *:nth-child(1) { transition-delay: 0ms; }
       [data-reveal-group] > *:nth-child(2) { transition-delay: 90ms; }
       [data-reveal-group] > *:nth-child(3) { transition-delay: 180ms; }
@@ -168,15 +145,13 @@ const jsonLd = {
     <script>
       import Lenis from 'lenis';
 
-      // 1. Lenis smooth scroll
       const lenis = new Lenis({
         duration: 1.25,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease-out
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         smoothWheel: true,
       });
 
-      // Wire Lenis to anchor links in the navbar
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', (e) => {
           e.preventDefault();
@@ -186,25 +161,21 @@ const jsonLd = {
         });
       });
 
-      // RAF loop
       function raf(time: number) {
         lenis.raf(time);
         requestAnimationFrame(raf);
       }
       requestAnimationFrame(raf);
 
-      // 2. Scroll progress bar
       const bar = document.getElementById('scroll-progress');
       lenis.on('scroll', ({ progress }: { progress: number }) => {
         if (bar) bar.style.width = (progress * 100) + '%';
       });
 
-      // 3. Scroll-reveal with IntersectionObserver
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const el = entry.target as HTMLElement;
-
           if (el.hasAttribute('data-reveal')) {
             el.classList.add('is-visible');
             observer.unobserve(el);
