@@ -8,6 +8,7 @@ const { lang = "tr" } = Astro.props;
 const t = ui[lang].nav;
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const altHref = lang === 'tr' ? `${base}en/` : base;
 ---
 
 <div class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
@@ -15,14 +16,21 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <header class="flex flex-row justify-between items-center py-3 lg:py-4">
       <Astronav>
         <div class="flex w-full lg:w-auto items-center justify-between">
-          <a href={base} class="flex items-center gap-2" aria-label="MAT Ambalaj Çözümleri Ana Sayfa">
+          <a href={base} id="nav-logo" class="flex items-center gap-3 transition-opacity duration-300 opacity-0" aria-label="MAT Ambalaj Çözümleri Ana Sayfa">
             <img
-              id="nav-logo"
+              src={`${base}images/logo-pc.png`}
+              alt="Packaging Cockpit"
+              class="h-8 lg:h-10 w-auto object-contain"
+              width="200"
+              height="40"
+            />
+            <div class="w-px h-6 lg:h-8 bg-gray-300 flex-shrink-0"></div>
+            <img
               src={`${base}images/logo-mat.png`}
               alt="MAT Ambalaj Çözümleri"
-              class="h-10 lg:h-16 w-auto object-contain transition-opacity duration-300 opacity-0"
-              width="256"
-              height="64"
+              class="h-7 lg:h-9 w-auto object-contain"
+              width="180"
+              height="36"
             />
           </a>
           <div class="block lg:hidden">
@@ -50,7 +58,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                 {t.cta}
               </a>
               <a
-                href={t.altHref}
+                href={altHref}
                 class="flex items-center justify-center w-12 py-3 border border-gray-200 rounded-lg text-sm font-bold text-gray-600 hover:border-brand-teal hover:text-brand-teal transition-colors duration-150">
                 {t.altLabel}
               </a>
@@ -71,7 +79,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           <div class="hidden lg:flex lg:items-center lg:gap-2 lg:ml-4">
             <!-- Lang toggle -->
             <a
-              href={t.altHref}
+              href={altHref}
               class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200 text-sm font-bold text-gray-500 hover:border-brand-teal hover:text-brand-teal transition-colors duration-150"
               aria-label="Switch language">
               {t.altLabel}
