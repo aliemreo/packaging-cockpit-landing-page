@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 
 export default defineConfig({
-  site: "https://aliemreo.github.io",
-  base: "/packaging-cockpit-landing-page",
+  site: "https://packaging-cockpit.matpack.net",
+  base: "/",
   integrations: [tailwind(), icon()],
 });
